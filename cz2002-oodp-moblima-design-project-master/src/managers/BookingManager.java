@@ -153,43 +153,44 @@ public class BookingManager implements ResetSelf {
     		// Show the seating plan
         	displaySeats(getSeatingPlan());
         	
-        	System.out.println("==================== SEAT BOOKING ====================\n"+
+        	System.out.println("------------------ SEAT BOOKING --------------------\n"+
 							   " 1. Select a seat                                   \n"+
 								" 2. Deselect a seat                                 \n"+
 								" 3. Confirm and proceed to ticket selection         \n"+
 								" 0. Exit			                                  \n"+
-							   "======================================================");
+							   "------------------------------------------------------");
         	System.out.println("Please select a choice:");
+        	
+        	int choice = sc.nextInt();
+        	
+        	if (choice == 0) {
+        		exit = true;
+    			resetSelf();
+        	}
+        	else if (choice == 1) {
+        		sc.next();
+        		addSeatSelection();
+        	}
+        	else if (choice == 2) {
+        		deleteSeatSelection();
+        	}
+        	else if (choice == 3) {
+        		if (getSelectedSeats().size() <= 0) {
+    				System.out.println("No seats selected. Please select a seat before choosing tickets.");
+    			}
+    			else {
+    				// Book tickets
+    				TicketManager.getInstance().startTicketSelection(getShowtime(), getSelectedSeats());
+    			}
+        	}
+        	else {
+        		System.out.println("Invalid choice entered. Please try again.");
+        	}
         	
         	while (!sc.hasNextInt()) {
             	System.out.println("Invalid input type. Please enter an integer value.");
         		sc.next(); // Remove newline character
             }
-        	
-        	switch(sc.nextInt()) {
-        		case 0: // Exit, reset everything
-        			exit = true;
-        			resetSelf();
-        			break;
-        		case 1: // Select seat
-        			addSeatSelection();
-        			break;
-        		case 2: // Deselect seat
-        			deleteSeatSelection();
-        			break;
-        		case 3: // Ticket selection, requires at least a seat selection
-        			// If no seats selected, don't allow ticket selection
-        			if (getSelectedSeats().size() <= 0) {
-        				System.out.println("No seats selected. Please select a seat before choosing tickets.");
-        			}
-        			else {
-        				// Book tickets
-        				TicketManager.getInstance().startTicketSelection(getShowtime(), getSelectedSeats());
-        			}
-        			break;
-        		default:
-        			System.out.println("Invalid choice entered. Please try again.");
-        	}
     	}
     }
     
@@ -572,7 +573,21 @@ public class BookingManager implements ResetSelf {
 		int seatCol = Integer.valueOf(seatID.substring(1, seatID.length())); // Integer column of seatID
 		String seatModifier;
 		
-		switch(operation) {
+		if (operation.equals("addSelection")) {
+			seatModifier = "2";
+		}
+		else if (operation.equals("deleteSelection")) {
+			seatModifier = "0";
+		}
+		else if (operation.equals("confirmSelection")) {
+			seatModifier = "1";
+		}
+		else {
+			System.out.println("Error! Operation parameter for function updateSeatingPlan() in BookingManager is invalid.");
+			return;
+		}
+		
+		/*switch(operation) {
 			case "addSelection":
 				seatModifier = "2";
 				break;
@@ -585,7 +600,7 @@ public class BookingManager implements ResetSelf {
 			default:
 				System.out.println("Error! Operation parameter for function updateSeatingPlan() in BookingManager is invalid.");
 				return; // Terminate
-		}
+		}*/
 		
 		// Iterate until we find the seat's row and col index position in the seatingPlan List
     	for (int row = 0; row < getSeatingPlan().size(); row++) {

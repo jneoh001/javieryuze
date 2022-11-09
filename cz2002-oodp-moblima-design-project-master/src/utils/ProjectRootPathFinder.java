@@ -11,7 +11,7 @@ public class ProjectRootPathFinder {
 	public static String findProjectRootPath() {
 		try {
 			// Access root folder
-			String rootFolderName = "OODP-MOBLIMA-Design-Project";			
+			String rootFolderName = "cz2002-oodp-moblima-design-project-master";			
 			File file = new File(".");
 			
 			if (file.getCanonicalFile().getName().equals(rootFolderName) == true) {
