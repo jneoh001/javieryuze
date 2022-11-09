@@ -1,0 +1,11 @@
+m1007
+Disney's Frozen 2
+ANIMATION,ACTION,FANTASY
+Chris Buck
+Kristen Bell,Josh Gad,Sterling K. Brown
+Anna, Elsa, Kristoff, Olaf and Sven leave Arendelle to travel to an ancient, autumn-bound forest of an enchanted land. They set out to find the origin of Elsa's powers in order to save their kingdom.
+PG
+TWOD,THREED
+103
+COMING_SOON
+27/11/2019

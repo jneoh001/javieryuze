@@ -1,0 +1,2 @@
+BASE    | 10
+BOOKING | 1
