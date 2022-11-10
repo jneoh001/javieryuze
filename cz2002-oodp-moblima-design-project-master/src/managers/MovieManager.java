@@ -58,8 +58,37 @@ public class MovieManager {
      */
     public void movieMenuStaff() {
         int choice;
+        System.out.println("=================== MOVIE MENU (STAFF) ==================\n" +
+                " 1. View/ Edit Movies 						    		\n" +
+                " 2. Add Movies		                                 	\n" +
+                " 3. Search Movies (By Title)	                        \n" +
+                " 0. Back to StaffApp......                             \n"+
+                "==========================================================");
+        System.out.println("Enter choice: ");
+        while(!sc.hasNextInt()) {
+            System.out.println("Invalid input type. Please choose a choice from 0-3");
+            sc.next();
+        }
+        choice = sc.nextInt();
+        while (choice != 0) {
+        	if (choice == 1) {
+        		this.viewMovies("Staff");
+        	}
+        	else if (choice == 2) {
+        		this.addMovies();
+        	}
+        	else if (choice == 3) {
+        		this.searchMovies("Staff");
+        	}
+        	else {
+        		System.out.println("Invalid choice. Please enter a number between 0-3.");
+        	}
+        }
+        System.out.println("Back to StaffApp......");
         
-        do {
+        
+        
+        /*do {
             System.out.println("=================== MOVIE MENU (STAFF) ==================\n" +
                                " 1. View/ Edit Movies 						    		\n" +
                                " 2. Add Movies		                                 	\n" +
@@ -91,7 +120,7 @@ public class MovieManager {
                     System.out.println("Invalid choice. Please enter a number between 0-3.");
                     break;
             }
-        } while (choice != 0);
+        } while (choice != 0);*/
     }
 
     /**
