@@ -132,8 +132,27 @@ public class MovieManager {
     public void viewMovies(String appType) {
         int choice;
         if (appType.equals("Staff")) {
-            do {
-                System.out.println("=================== MOVIE MENU (STAFF) ==================\n" +
+        	System.out.println("=================== MOVIE MENU (STAFF) ==================\n" +
+                    " 1. List all movies	                                \n" +
+                    " 2. Coming Soon 						       			\n" +
+                    " 3. Preview		                                    \n" +
+                    " 4. Now Showing	                                    \n" +
+                    " 5. End of Showing                                     \n" +
+                    " 0. Back to Staff Movie Menu......                     \n"+
+                    "=========================================================");
+
+
+        	System.out.println("Enter choice: ");
+ 
+        	while (!sc.hasNextInt()) {
+        		System.out.println("Invalid input type. Please choose a choice from 0-5.");
+        		sc.next(); // Remove newline character
+        	}
+ 
+        	choice = sc.nextInt();
+        	while (choice != 0) {
+        	//do{
+                /*System.out.println("=================== MOVIE MENU (STAFF) ==================\n" +
                                    " 1. List all movies	                                \n" +
                                    " 2. Coming Soon 						       			\n" +
                                    " 3. Preview		                                    \n" +
@@ -150,7 +169,58 @@ public class MovieManager {
             		sc.next(); // Remove newline character
             	}
                 
-                choice = sc.nextInt();
+                choice = sc.nextInt();*/
+                if (choice == 1) {
+                	List<Movie> allMovies = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("COMING_SOON")||
+                                entry.getValue().getShowingStatus().equalsString("PREVIEW")||
+                                entry.getValue().getShowingStatus().equalsString("NOW_SHOWING")){
+                            allMovies.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(allMovies,appType);
+                }
+                else if (choice == 2) {
+                	List<Movie> comingSoon = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("COMING_SOON")){
+                            comingSoon.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(comingSoon,appType);
+                }
+                else if (choice == 3) {
+                	List<Movie> preview = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("PREVIEW")){
+                            preview.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(preview,appType);
+                }
+                else if (choice == 4) {
+                	List<Movie> nowShowing = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("NOW_SHOWING")){
+                            nowShowing.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(nowShowing,appType);
+                }
+                else if (choice == 5) {
+                	List<Movie> endShowing = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("END_OF_SHOWING")){
+                            endShowing.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(endShowing,appType);
+                }
+                else if (choice == 0) {
+                	System.out.println("Back to StaffApp...");
+                }
+                /*
                 switch (choice) {
                     case 1:
                         List<Movie> allMovies = new ArrayList<Movie>();
@@ -202,8 +272,26 @@ public class MovieManager {
                     case 0:
                         System.out.println("Back to StaffApp...");
                         break;
-                }
-            } while (choice != 0);
+                }*/
+                System.out.println("=================== MOVIE MENU (STAFF) ==================\n" +
+                        " 1. List all movies	                                \n" +
+                        " 2. Coming Soon 						       			\n" +
+                        " 3. Preview		                                    \n" +
+                        " 4. Now Showing	                                    \n" +
+                        " 5. End of Showing                                     \n" +
+                        " 0. Back to Staff Movie Menu......                     \n"+
+                        "=========================================================");
+
+
+            	System.out.println("Enter choice: ");
+     
+            	while (!sc.hasNextInt()) {
+            		System.out.println("Invalid input type. Please choose a choice from 0-5.");
+            		sc.next(); // Remove newline character
+            	}
+     
+            	choice = sc.nextInt();
+            } //while (choice != 0);
 
         } else if (appType.equals("Customer")) {
             do {
@@ -223,6 +311,51 @@ public class MovieManager {
             	}
                 
                 choice = sc.nextInt();
+                if (choice == 1) {
+                	List<Movie> allMovies = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("COMING_SOON")||
+                            entry.getValue().getShowingStatus().equalsString("PREVIEW")||
+                            entry.getValue().getShowingStatus().equalsString("NOW_SHOWING")){
+                            allMovies.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(allMovies,appType);
+                }
+                else if (choice == 2) {
+                	List<Movie> comingSoon = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("COMING_SOON")){
+                            comingSoon.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(comingSoon,appType);
+                }
+                else if (choice == 3) {
+                	List<Movie> preview = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("PREVIEW")){
+                            preview.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(preview,appType);
+                }
+                else if (choice == 4) {
+                	List<Movie> nowShowing = new ArrayList<Movie>();
+                    for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                        if(entry.getValue().getShowingStatus().equalsString("NOW_SHOWING")){
+                            nowShowing.add(entry.getValue());
+                        }
+                    }
+                    this.selectMovie(nowShowing,appType);
+                }
+                else if (choice == 5) {
+                	this.searchMovies(appType);
+                }
+                else if (choice == 0) {
+                	System.out.println("Back to CustomerApp...");
+                }
+                /*
                 switch (choice) {
                     case 1:
                         List<Movie> allMovies = new ArrayList<Movie>();
@@ -268,7 +401,7 @@ public class MovieManager {
                     case 0:
                         System.out.println("Back to CustomerApp...");
                         break;
-                }
+                }*/
             } while (choice != 0);
         }
     }
@@ -283,8 +416,25 @@ public class MovieManager {
     private void subMovieMenu(Movie movie, String appType){
         if(appType.equals("Staff")) {
             int choice;
-            do{
-                System.out.println(	"====================== MOVIE CHOICES =====================\n" +
+            System.out.println(	"====================== MOVIE CHOICES =====================\n" +
+                    " 1. Display/Edit Showtimes                              \n" +
+                    " 2. Edit Movie 						       		      \n" +
+                    " 3. Remove Movie		                                  \n" +
+                    " 4. View Reviews	                                      \n" +
+                    " 5. Delete Reviews	                                  \n" +
+                    " 0. Back to Movie Listings			                  \n"+
+                    "==========================================================");
+
+            System.out.println("Enter choice: ");
+
+            while (!sc.hasNextInt()) {
+            	System.out.println("Invalid input type. Please choose a choice from 0-5.");
+            	sc.next(); // Remove newline character
+            }
+            choice = sc.nextInt();
+            while (choice != 0) {
+            //do{
+                /*System.out.println(	"====================== MOVIE CHOICES =====================\n" +
 			                        " 1. Display/Edit Showtimes                              \n" +
 			                        " 2. Edit Movie 						       		      \n" +
 			                        " 3. Remove Movie		                                  \n" +
@@ -299,7 +449,29 @@ public class MovieManager {
             		System.out.println("Invalid input type. Please choose a choice from 0-5.");
             		sc.next(); // Remove newline character
             	}
-                choice = sc.nextInt();
+                choice = sc.nextInt();*/
+            	if (choice == 1) {
+            		ShowtimeManager.getInstance().getMovieShowtimes(movie.getMovieID(), appType);
+            	}
+            	else if (choice == 2) {
+            		this.editMovies(movie);
+            	}
+            	else if (choice == 3) {
+            		this.removeMovie(movie);
+            	}
+            	else if (choice == 4) {
+            		ReviewManager.getInstance().printReviews(movie.getReviews());
+            	}
+            	else if (choice == 5) {
+            		ReviewManager.getInstance().deleteReview(movie.getReviews());
+            	}
+            	else if (choice == 0) {
+            		System.out.println("Back to Movie Listings......");
+            	}
+            	else {
+            		System.out.println("Please enter a number between 0-5");
+            	}
+            	/*
                 switch (choice) {
                     case 1:
                         ShowtimeManager.getInstance().getMovieShowtimes(movie.getMovieID(), appType);
@@ -321,8 +493,8 @@ public class MovieManager {
                         break;
                     default:
                         System.out.println("Please enter a number between 0-5");
-                }
-            }while(choice != 0);
+                }*/
+            } //while(choice != 0);
         }
         else if(appType.equals("Customer") && !movie.getShowingStatus().equals(ShowingStatus.COMING_SOON)){
             int choice;
