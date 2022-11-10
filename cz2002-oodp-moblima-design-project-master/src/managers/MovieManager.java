@@ -83,6 +83,19 @@ public class MovieManager {
         	else {
         		System.out.println("Invalid choice. Please enter a number between 0-3.");
         	}
+        	System.out.println("=================== MOVIE MENU (STAFF) ==================\n" +
+                    " 1. View/ Edit Movies 						    		\n" +
+                    " 2. Add Movies		                                 	\n" +
+                    " 3. Search Movies (By Title)	                        \n" +
+                    " 0. Back to StaffApp......                             \n"+
+                    "==========================================================");
+            System.out.println("Enter choice: ");
+            while(!sc.hasNextInt()) {
+                System.out.println("Invalid input type. Please choose a choice from 0-3");
+                sc.next();
+            }
+            choice = sc.nextInt();
+        	
         }
         System.out.println("Back to StaffApp......");
         
@@ -294,8 +307,26 @@ public class MovieManager {
             } //while (choice != 0);
 
         } else if (appType.equals("Customer")) {
-            do {
-                System.out.println("=================== MOVIE MENU (CUSTOMER) ================\n" +
+        	
+        	System.out.println("=================== MOVIE MENU (CUSTOMER) ================\n" +
+                    " 1. List all movies	                                 \n" +
+                    " 2. Coming Soon 						       			 \n" +
+                    " 3. Preview		                                     \n" +
+                    " 4. Now Showing	                                     \n" +
+                    " 5. Search Movies (By Title)                            \n" +
+                    " 0. Back to Customer Movie Menu......                   \n"+
+                    "==========================================================");
+        	System.out.println("Enter choice: ");
+ 
+        	while (!sc.hasNextInt()) {
+        		System.out.println("Invalid input type. Please choose a choice from 0-5.");
+        		sc.next(); // Remove newline character
+        	}
+ 
+        	choice = sc.nextInt();
+        	
+            //do {
+                /*System.out.println("=================== MOVIE MENU (CUSTOMER) ================\n" +
                                    " 1. List all movies	                                 \n" +
                                    " 2. Coming Soon 						       			 \n" +
                                    " 3. Preview		                                     \n" +
@@ -310,7 +341,8 @@ public class MovieManager {
             		sc.next(); // Remove newline character
             	}
                 
-                choice = sc.nextInt();
+                choice = sc.nextInt();*/
+        	while (choice != 0) {
                 if (choice == 1) {
                 	List<Movie> allMovies = new ArrayList<Movie>();
                     for(Map.Entry<String,Movie> entry : movies.entrySet()){
@@ -402,7 +434,7 @@ public class MovieManager {
                         System.out.println("Back to CustomerApp...");
                         break;
                 }*/
-            } while (choice != 0);
+            } //while (choice != 0);
         }
     }
 
@@ -494,12 +526,50 @@ public class MovieManager {
                     default:
                         System.out.println("Please enter a number between 0-5");
                 }*/
+            	
+            	System.out.println(	"====================== MOVIE CHOICES =====================\n" +
+                        " 1. Display/Edit Showtimes                              \n" +
+                        " 2. Edit Movie 						       		      \n" +
+                        " 3. Remove Movie		                                  \n" +
+                        " 4. View Reviews	                                      \n" +
+                        " 5. Delete Reviews	                                  \n" +
+                        " 0. Back to Movie Listings			                  \n"+
+                        "==========================================================");
+
+                System.out.println("Enter choice: ");
+
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please choose a choice from 0-5.");
+                	sc.next(); // Remove newline character
+                }
+                choice = sc.nextInt();
+            	
             } //while(choice != 0);
         }
         else if(appType.equals("Customer") && !movie.getShowingStatus().equals(ShowingStatus.COMING_SOON)){
             int choice;
-            do{
-                System.out.println(	"====================== MOVIE CHOICES =====================\n" +
+            
+            System.out.println(	"====================== MOVIE CHOICES =====================\n" +
+                    " 1. Display Showtimes                                   \n" +
+                    " 2. View Reviews                                        \n" +
+                    " 3. Leave Review                                        \n" +
+                    " 0. Back to Movie Listings                              \n"+
+                    "==========================================================");
+
+            System.out.println("Enter your choice: ");
+
+            while (!sc.hasNextInt()) {
+            	System.out.println("Invalid input type. Please choose a choice from 0-2.");
+            	sc.next(); // Remove newline character
+            }
+
+            choice = sc.nextInt();
+            //sc.nextLine();
+            
+            while (choice != 0) {
+            
+            //do{
+                /*System.out.println(	"====================== MOVIE CHOICES =====================\n" +
 			                        " 1. Display Showtimes                                   \n" +
 			                        " 2. View Reviews                                        \n" +
 			                        " 3. Leave Review                                        \n" +
@@ -514,9 +584,25 @@ public class MovieManager {
             	}
                 
                 choice = sc.nextInt();
-                sc.nextLine();
+                sc.nextLine();*/
+            	
+            	if (choice == 1) {
+            		ShowtimeManager.getInstance().getMovieShowtimes(movie.getMovieID(),appType);
+            	}
+            	else if (choice == 2) {
+            		ReviewManager.getInstance().printReviews(movie.getReviews());
+            	}
+            	else if (choice == 3) {
+            		ReviewManager.getInstance().addReview(movie.getMovieID());
+            	}
+            	else if (choice == 0) {
+            		System.out.println("Back to Movie Listings......");
+            	}
+            	else {
+            		System.out.println("Please enter a number between 0-3");
+            	}
                 
-                switch (choice) {
+                /*switch (choice) {
                     case 1:
                         ShowtimeManager.getInstance().getMovieShowtimes(movie.getMovieID(),appType);
                         break;
@@ -532,8 +618,26 @@ public class MovieManager {
                     default:
                         System.out.println("Please enter a number between 0-3");
                         break;
+                }*/
+                
+                System.out.println(	"====================== MOVIE CHOICES =====================\n" +
+                        " 1. Display Showtimes                                   \n" +
+                        " 2. View Reviews                                        \n" +
+                        " 3. Leave Review                                        \n" +
+                        " 0. Back to Movie Listings                              \n"+
+                        "==========================================================");
+
+                System.out.println("Enter your choice: ");
+    
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please choose a choice from 0-2.");
+                	sc.next(); // Remove newline character
                 }
-            } while(choice != 0);
+    
+                choice = sc.nextInt();
+                //sc.nextLine();
+                
+            } //while(choice != 0);
 
         }
     }
@@ -745,9 +849,55 @@ public class MovieManager {
         newMovie.setReleaseDate(date);
 
         int choice1;
-
-        do {
-            System.out.println("Your current movie: ");
+        //////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Your current movie: ");
+        System.out.println("Movie Title: " + newMovie.getTitle());
+        System.out.print("Genres: ");
+        for (int i = 0; i < newMovie.getGenres().size(); i++) {
+            System.out.print(newMovie.getGenres().get(i).toString());
+            if (i+1 < newMovie.getGenres().size()) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+        System.out.println("Rating: " + newMovie.getMovieRating());
+        System.out.println("Duration: " + newMovie.getMovieDuration());
+        System.out.print("Movie Formats: ");
+        for (int j = 0; j < newMovie.getMovieFormats().size(); j++) {
+            System.out.print(newMovie.getMovieFormats().get(j).toString());
+            if (j+1 < newMovie.getMovieFormats().size()) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+        System.out.println("Showing Status: "+newMovie.getShowingStatus());
+        System.out.println("Synopsis: "+newMovie.getSynopsis());
+        System.out.println("Director: "+newMovie.getDirector());
+        System.out.print("Cast: ");
+        for (int k = 0; k < newMovie.getCast().size(); k++) {
+            System.out.print(newMovie.getCast().get(k));
+            if (k+1 < newMovie.getCast().size()) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+        System.out.println(	"========================= ADD MOVIE ====================\n" +
+                            " 1. Submit movie                                      \n" +
+                            " 2. Edit movie                                        \n" +
+                            " 0. Discard movie, back to Movie Menu                 \n"+
+                            "========================================================");
+        System.out.println("Enter choice: ");
+        
+        while (!sc.hasNextInt()) {
+        	System.out.println("Invalid input type. Please enter an integer value between 0-2.");
+    		sc.next(); // Remove newline character
+        }
+        
+        choice1 = sc.nextInt();
+        //////////////////////////////////////////////////////////////////////////////////
+        while (choice1 != 0) {
+        //do {
+            /*System.out.println("Your current movie: ");
             System.out.println("Movie Title: " + newMovie.getTitle());
             System.out.print("Genres: ");
             for (int i = 0; i < newMovie.getGenres().size(); i++) {
@@ -790,9 +940,27 @@ public class MovieManager {
         		sc.next(); // Remove newline character
             }
             
-            choice1 = sc.nextInt();
+            choice1 = sc.nextInt();*/
+        	if (choice1 == 1) {
+        		String movieID = IDHelper.getLatestID("movie");
+                newMovie.setMovieID(movieID);
+                this.save(newMovie);
+                this.movies.put(newMovie.getMovieID(), newMovie);
 
-            switch (choice1) {
+                System.out.println("Movie created! Back to Movie Menu......");
+                choice1 = 0;
+        	}
+        	else if (choice1 == 2) {
+        		this.editMovies(newMovie);
+        	}
+        	else if (choice1 == 0) {
+        		System.out.println("Movie discarded. Back to Movie Menu......");
+        	}
+        	else {
+        		System.out.println("Invalid choice. Please enter a number between 0-2");
+        	}
+
+            /*switch (choice1) {
                 case 1:
                     String movieID = IDHelper.getLatestID("movie");
                     newMovie.setMovieID(movieID);
@@ -811,9 +979,9 @@ public class MovieManager {
                 default:
                     System.out.println("Invalid choice. Please enter a number between 0-2");
                     break;
-            }
+            }*/
 
-        } while (choice1 != 0);
+        } //while (choice1 != 0);
     }
 
     /**
@@ -823,8 +991,34 @@ public class MovieManager {
      */
     private void editMovies(Movie movie) {
         int choice;
-        do {
-        	System.out.println("Currently selected movie details:");
+        
+        System.out.println("Currently selected movie details:");
+    	movie.displayMovieDetails();
+        System.out.println("=================== EDIT MOVIES (STAFF) ==================\n" +
+                            " 1. Edit Title      	                                  \n" +
+                            " 2. Edit Genres                      	        		  \n" +
+                            " 3. Edit Director	                                     \n" +
+                            " 4. Edit Cast                                           \n" +
+                            " 5. Edit Synopsis                                       \n" +
+                            " 6. Edit Rating                                         \n" +
+                            " 7. Edit Formats                                        \n" +
+                            " 8. Edit Duration                                       \n" +
+                            " 9. Edit Showing Status                                 \n" +
+                            " 10. Edit Release Date                                  \n" +
+                            " 0. Finish Editing Movie                                \n"+
+                            "=========================================================");
+        System.out.println("Enter choice: ");
+        
+        while (!sc.hasNextInt()) {
+        	System.out.println("Invalid input type. Please enter an integer value between 0-10.");
+    		sc.next(); // Remove newline character
+        }
+        
+        choice = sc.nextInt();
+        sc.nextLine();
+        while (choice != 0) {
+        //do {
+        	/*System.out.println("Currently selected movie details:");
         	movie.displayMovieDetails();
             System.out.println("=================== EDIT MOVIES (STAFF) ==================\n" +
                                 " 1. Edit Title      	                                  \n" +
@@ -847,8 +1041,149 @@ public class MovieManager {
             }
             
             choice = sc.nextInt();
-            sc.nextLine();
-            switch (choice) {
+            sc.nextLine();*/
+        	
+        	if (choice == 1) {
+        		System.out.println("Enter new title");
+                String title = sc.nextLine();
+                movie.setTitle(title);
+        	}
+        	else if (choice == 2) {
+        		ArrayList<Genre> Genres = new ArrayList<>();
+                System.out.println("List of Genres:");
+                for(int i=0;i<Genre.values().length;i++){
+                    System.out.println(i+1 +". " +Genre.values()[i].toString());
+                }
+                System.out.println("Enter number of genres: ");
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please enter an integer value.");
+            		sc.next(); // Remove newline character
+                }
+                int numGenres = sc.nextInt();
+                for (int i=0;i<numGenres;i++)
+                {
+                    System.out.println("Pick genre: ");
+                    
+                    while (!sc.hasNextInt()) {
+                    	System.out.println("Invalid input type. Please enter an integer value.");
+                		sc.next(); // Remove newline character
+                    }
+                    
+                    int genre = sc.nextInt()-1;
+                    System.out.println("You picked: "+Genre.values()[genre].toString());
+                    Genres.add(Genre.values()[genre]);
+                }
+                movie.setGenres(Genres);
+        	}
+        	else if (choice == 3) {
+        		System.out.println("Enter revised director name");
+        	}
+        	else if (choice == 4) {
+        		System.out.println("Enter number of cast members: ");
+                
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please enter an integer value.");
+            		sc.next(); // Remove newline character
+                }
+                
+                int castSize = sc.nextInt();
+                sc.nextLine();
+                ArrayList<String> newCastList = new ArrayList<>();
+                for (int i = 0; i < castSize; i++) {
+                    System.out.println("Enter cast member: ");
+                    String newCast = sc.nextLine();
+                    newCastList.add(newCast);
+                }
+                movie.setCast(newCastList);
+        	}
+        	else if (choice == 5) {
+        		System.out.println("Enter new synopsis: ");
+                String newSynopsis = sc.nextLine();
+                movie.setSynopsis(newSynopsis);
+        	}
+        	else if (choice == 6) {
+        		System.out.println("Pick new movie rating: ");
+                for(int i=0;i<MovieRating.values().length;i++){
+                    System.out.println(i+1 + ". " +MovieRating.values()[i].toString());
+                }
+                
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please enter an integer value.");
+            		sc.next(); // Remove newline character
+                }
+                
+                int movieRating = sc.nextInt()-1;
+                System.out.println("You picked "+MovieRating.values()[movieRating].toString());
+                movie.setMovieRating(MovieRating.values()[movieRating]);
+        	}
+        	else if (choice == 7) {
+        		ArrayList<MovieFormat> newFormats = new ArrayList<>();
+                System.out.println("List of movie formats: ");
+                for(int i=0;i<MovieFormat.values().length;i++){
+                    System.out.println(i+1 +". " +MovieFormat.values()[i].toString());
+                }
+                System.out.println("Enter number of movie formats: ");
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please enter an integer value.");
+            		sc.next(); // Remove newline character
+                }
+                int formatLength = sc.nextInt();
+                for (int i=0;i<formatLength;i++)
+                {
+                    System.out.println("Pick new movie format: ");
+                    
+                    while (!sc.hasNextInt()) {
+                    	System.out.println("Invalid input type. Please enter an integer value.");
+                		sc.next(); // Remove newline character
+                    }
+                    
+                    int format = sc.nextInt()-1;
+                    System.out.println("You picked "+MovieFormat.values()[format].toString());
+                    newFormats.add(MovieFormat.values()[format]);
+                }
+                movie.setMovieFormats(newFormats);
+        	}
+        	else if (choice == 8) {
+        		System.out.println("Enter new duration: ");
+                
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please enter an integer value.");
+            		sc.next(); // Remove newline character
+                }
+                
+                int newDuration = sc.nextInt();
+                movie.setMovieDuration(newDuration);
+        	}
+        	else if (choice == 9) {
+        		System.out.println("Pick showing status: ");
+                for(int i=0;i<ShowingStatus.values().length;i++){
+                    System.out.println(i+1 + ". " +ShowingStatus.values()[i].toString());
+                }
+                
+                while (!sc.hasNextInt()) {
+                	System.out.println("Invalid input type. Please enter an integer value.");
+            		sc.next(); // Remove newline character
+                }
+                
+                int showStatus = sc.nextInt()-1;
+                System.out.println("You picked "+ShowingStatus.values()[showStatus]);
+                movie.setShowingStatus(ShowingStatus.values()[showStatus]);
+        	}
+        	else if (choice == 10) {
+        		System.out.println("Enter new release date: ");
+                String newReleaseDate = sc.next();
+                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate date = LocalDate.parse(newReleaseDate, dateFormat);
+                movie.setReleaseDate(date);
+        	}
+        	else if (choice == 0) {
+        		System.out.println("End of edit");
+        	}
+        	else {
+        		System.out.println("Please enter a number from 0-10: ");
+        	}
+        	
+            /*switch (choice) {
                 case 1:
                 	System.out.println("Enter new title");
                     String title = sc.nextLine();
@@ -988,8 +1323,34 @@ public class MovieManager {
                     break;
                 default:
                     System.out.println("Please enter a number from 0-10: ");
+            }*/
+        	
+        	System.out.println("Currently selected movie details:");
+        	movie.displayMovieDetails();
+            System.out.println("=================== EDIT MOVIES (STAFF) ==================\n" +
+                                " 1. Edit Title      	                                  \n" +
+                                " 2. Edit Genres                      	        		  \n" +
+                                " 3. Edit Director	                                     \n" +
+                                " 4. Edit Cast                                           \n" +
+                                " 5. Edit Synopsis                                       \n" +
+                                " 6. Edit Rating                                         \n" +
+                                " 7. Edit Formats                                        \n" +
+                                " 8. Edit Duration                                       \n" +
+                                " 9. Edit Showing Status                                 \n" +
+                                " 10. Edit Release Date                                  \n" +
+                                " 0. Finish Editing Movie                                \n"+
+                                "=========================================================");
+            System.out.println("Enter choice: ");
+            
+            while (!sc.hasNextInt()) {
+            	System.out.println("Invalid input type. Please enter an integer value between 0-10.");
+        		sc.next(); // Remove newline character
             }
-        } while (choice != 0);
+            
+            choice = sc.nextInt();
+            sc.nextLine();
+        	
+        } //while (choice != 0);
 
         this.save(movie);
     }
@@ -1013,8 +1374,35 @@ public class MovieManager {
     	int choice;
     	int subchoice;
     	
-    	do {
-    		if (appType.equals("Customer")) {
+    	if (appType.equals("Customer")) {
+            System.out.println(	"==================== View Top 5 Movies =====================\n" +
+                                " 1. By Sales                                              \n" +
+                                " 2. By Tickets Sold                                       \n" +
+                                " 3. By Reviews                                            \n" +
+                                " 0. Back to CustomerApp                                   \n"+
+                                "============================================================");
+		} else if (appType.equals("Staff")) {
+            System.out.println(	"==================== View Top 5 Movies =====================\n" +
+                                " 1. By Sales                                              \n" +
+                                " 2. By Tickets Sold                                       \n" +
+                                " 3. By Reviews                                            \n" +
+                                " 0. Back to StaffApp                                      \n"+
+                                "============================================================");
+		}
+		
+		System.out.println("Enter choice:");
+		
+		while (!sc.hasNextInt()) {
+        	System.out.println("Invalid input type. Please enter an integer value.");
+    		sc.next(); // Remove newline character
+        }
+		
+		choice= sc.nextInt();
+    	
+		while (choice != 0) {
+		
+    	//do {
+    		/*if (appType.equals("Customer")) {
                 System.out.println(	"==================== View Top 5 Movies =====================\n" +
                                     " 1. By Sales                                              \n" +
                                     " 2. By Tickets Sold                                       \n" +
@@ -1037,11 +1425,83 @@ public class MovieManager {
         		sc.next(); // Remove newline character
             }
 			
-			choice= sc.nextInt();
+			choice= sc.nextInt();*/
     		
 			ArrayList<Movie> top5 = new ArrayList<Movie>();
     		
-			switch (choice) {
+			if (choice == 1) {
+				for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                    if(entry.getValue().getShowingStatus().equalsString("PREVIEW")||
+                            entry.getValue().getShowingStatus().equalsString("NOW_SHOWING")){
+                        top5.add(entry.getValue());
+                    }
+                }
+                top5.sort(Comparator.comparingDouble(Movie::getGrossProfit).reversed());
+		
+                if(top5.size()==0){
+                    System.out.println("No Available Movies.");
+                    break;
+                } else {
+                   for (int i=0;i<Math.min(5, top5.size());i++) {
+                       System.out.println(i+1 +". "+top5.get(i).getTitle() +" (Sales:  "+ top5.get(i).getGrossProfit()+")");
+                   }
+                }
+                
+			}
+			else if (choice == 2) {
+				for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                    if(entry.getValue().getShowingStatus().equalsString("PREVIEW")||
+                            entry.getValue().getShowingStatus().equalsString("NOW_SHOWING")){
+                        top5.add(entry.getValue());
+                    }
+                }
+                top5.sort(Comparator.comparingLong(Movie::getTicketsSold).reversed());
+				
+                if(top5.size()==0){
+                    System.out.println("No Available Movies.");
+                    break;
+                } else {
+                   for (int i=0;i<Math.min(5, top5.size());i++) {
+                       System.out.println(i+1 +". "+top5.get(i).getTitle() +" (Tickets Sold:  "+ top5.get(i).getTicketsSold()+")");
+                   }
+                }					
+			}
+			else if (choice == 3) {
+				for(Map.Entry<String,Movie> entry : movies.entrySet()){
+                    if(entry.getValue().getShowingStatus().equalsString("PREVIEW")||
+                            entry.getValue().getShowingStatus().equalsString("NOW_SHOWING")){
+                        top5.add(entry.getValue());
+                    }
+                }
+                for(int i=top5.size()-1;i>=0;i--){
+                    if(top5.get(i).getReviews().size() <= 1){
+                    	top5.remove(i);
+                    }
+                }
+                top5.sort(Comparator.comparingDouble(Movie::getAverageReviewScore).reversed());
+                
+                if(top5.size()==0){
+                    System.out.println("No Available Movies.");
+                    break;
+                } else {
+                   for (int i=0;i<Math.min(5, top5.size());i++) {
+                       System.out.println(i+1 +". "+top5.get(i).getTitle() +" (Review Score:  "+ top5.get(i).getAverageReviewScore()+")");
+                   }
+                }
+			}
+			else if (choice == 0) {
+				if (appType.equals("Customer")) {
+					System.out.println("Back to CustomerApp......");
+				} else if (appType.equals("Staff")) {
+					System.out.println("Back to StaffApp......");
+				}
+
+			}
+			else {
+				System.out.println("Invalid input. Please enter a number between 0-3");
+			}
+			
+			/*switch (choice) {
 				case 1:
 	                for(Map.Entry<String,Movie> entry : movies.entrySet()){
 	                    if(entry.getValue().getShowingStatus().equalsString("PREVIEW")||
@@ -1115,7 +1575,7 @@ public class MovieManager {
 				default:
 					System.out.println("Invalid input. Please enter a number between 0-3");
 					break;
-			}
+			}*/
 			
 			if ( (choice >=1 && choice <= 3) && appType.equals("Customer") ) {
 	            do {
@@ -1141,9 +1601,32 @@ public class MovieManager {
 	            } while (subchoice != -1);
 			}
 			
+			if (appType.equals("Customer")) {
+	            System.out.println(	"==================== View Top 5 Movies =====================\n" +
+	                                " 1. By Sales                                              \n" +
+	                                " 2. By Tickets Sold                                       \n" +
+	                                " 3. By Reviews                                            \n" +
+	                                " 0. Back to CustomerApp                                   \n"+
+	                                "============================================================");
+			} else if (appType.equals("Staff")) {
+	            System.out.println(	"==================== View Top 5 Movies =====================\n" +
+	                                " 1. By Sales                                              \n" +
+	                                " 2. By Tickets Sold                                       \n" +
+	                                " 3. By Reviews                                            \n" +
+	                                " 0. Back to StaffApp                                      \n"+
+	                                "============================================================");
+			}
 			
+			System.out.println("Enter choice:");
 			
-    	} while (choice != 0);
+			while (!sc.hasNextInt()) {
+	        	System.out.println("Invalid input type. Please enter an integer value.");
+	    		sc.next(); // Remove newline character
+	        }
+			
+			choice= sc.nextInt();
+			
+    	} //while (choice != 0);
     }
 
     /**
