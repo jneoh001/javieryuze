@@ -14,7 +14,7 @@ import java.util.Scanner;
 import java.time.format.TextStyle;
 
 /**
- * This is the TicketManager. It will handle the ticket booking for the customer 
+ * TicketManager class. This controls the handling of ticket booking for customer.
  *
  */
 public class TicketManager implements ResetSelf {
@@ -38,7 +38,7 @@ public class TicketManager implements ResetSelf {
     private Scanner sc = new Scanner(System.in);
     
     /**
-     * This is for loop control to exit the current ticket manager "window"
+     * Controls whether to exit the TicketManager or not.
      */
     public Boolean exit = false;
 	
@@ -50,8 +50,7 @@ public class TicketManager implements ResetSelf {
  	private static TicketManager single_instance = null;
 	
 	/**
-     * Instantiates the TicketManager singleton. If no previous instance has been created,
-     * one is created. Otherwise, the previous instance created is used.
+     * This ensures that only one instance of TicketManager is utilizied
      * @return an instance of TicketManager.
      */
 	public static TicketManager getInstance()
@@ -65,26 +64,26 @@ public class TicketManager implements ResetSelf {
 	
 	// Constructor
     /**
-     * Constructor of TicketManager. Doesn't do much
+     * Constructor of TicketManager. 
      */
 	private TicketManager() {}
 	
-	// Public exposed methods to app
 	
+	// Public Methods
 	/**
 	 * Starts ticket selection process for the customer
 	 * @param showtime This is the current showtime object that is being booked
 	 * @param selectedSeats This is the current list of selected seats by the customer
 	 */
+
     public void startTicketSelection(Showtime showtime, List<String> selectedSeats) {
     	
-    	// Get new ticket prices based on showtime
     	updateTicketPrices(showtime);
     	
     	exit = false;
-    	int maxTickets = selectedSeats.size(); // Total number of tickets available for selection
-    	int ticketChoices = TicketType.values().length; // Number of ticket choices available
-    	int ticketsLeft = maxTickets; // Tracks number of tickets left for selection
+    	int maxTickets = selectedSeats.size(); 
+    	int ticketChoices = TicketType.values().length; 
+    	int ticketsLeft = maxTickets; 
     	int choice;
     	
     	while (!exit) {
