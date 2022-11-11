@@ -42,8 +42,7 @@ public class CustomerApp {
 		
 		System.out.println(	"============== MOBLIMA CUSTOMER APP ================\n" +
                 " 1. View movie listings					        \n" +
-                " 2. View top 5                                    \n" +
-                " 3. Check booking history                         \n" +
+                " 2. Check booking history                         \n" +
                 " 0. Back to MOBLIMA APP                           \n"+
 			    "====================================================");
 
@@ -76,10 +75,10 @@ public class CustomerApp {
 			if (choice == 1) {
 				MovieManager.getInstance().viewMovies("Customer");
 			}
-			else if (choice == 2) {
+			else if (choice == 3) {
 				MovieManager.getInstance().viewTop5("Customer");
 			}
-			else if (choice == 3) {
+			else if (choice == 2) {
 				int subchoice;
 				System.out.println(	"=========== SEARCH BOOKING HISTORY =============\n" +
 	                    " 1. Check via email address					    		\n" +
@@ -105,6 +104,7 @@ public class CustomerApp {
                 	}
                 	else if (subchoice == 0) {
                 		System.out.println("Back to CustomerApp......");
+                		break;
                 	}
                 	else {
                 		System.out.println("Invalid choice. Please choose between 0-2.");
@@ -118,10 +118,10 @@ public class CustomerApp {
             		
                     System.out.println("Enter choice: ");
                     
-                    while (!sc.hasNextInt()) {
+                    /*while (!sc.hasNextInt()) {
                     	System.out.println("Invalid input type. Please enter an integer value.");
                 		sc.next(); // Remove newline character
-                    }
+                    }*/
                     
                     subchoice = sc.nextInt();
                 	
@@ -185,6 +185,22 @@ public class CustomerApp {
                 	System.out.println("Invalid choice. Please choose between 0-3.");
                 	break;
 	            }*/
+			
+			System.out.println(	"============== MOBLIMA CUSTOMER APP ================\n" +
+	                " 1. View movie listings					        \n" +
+	                " 2. Check booking history                         \n" +
+	                " 0. Back to MOBLIMA APP                           \n"+
+				    "====================================================");
+
+			System.out.println("Enter choice: ");
+
+			while (!sc.hasNextInt()) {
+				System.out.println("Invalid input type. Please enter an integer value.");
+				sc.next(); // Remove newline character
+			}
+
+			choice = sc.nextInt();
+			
 	        } //while (choice != 0);
 		}
     }

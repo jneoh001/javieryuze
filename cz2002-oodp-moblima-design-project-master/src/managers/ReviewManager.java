@@ -212,7 +212,7 @@ public class ReviewManager {
         		break;
             }*/
             
-            System.out.println(	"========================= ADD REVIEW ====================\n" +
+            /*System.out.println(	"========================= ADD REVIEW ====================\n" +
                     " 1. Submit review	   						    	 	 \n" +
                     " 2. Edit review	   						    	 	 \n" +
 	                " 0. Discard review, back to Movie Choices              \n"+
@@ -234,7 +234,7 @@ public class ReviewManager {
             }
 
             choice = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine();*/
         
         } //while (choice != 0);
     }

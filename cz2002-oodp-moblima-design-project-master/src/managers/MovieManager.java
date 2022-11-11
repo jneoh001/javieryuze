@@ -387,6 +387,24 @@ public class MovieManager {
                 else if (choice == 0) {
                 	System.out.println("Back to CustomerApp...");
                 }
+                
+                System.out.println("=================== MOVIE MENU (CUSTOMER) ================\n" +
+                        " 1. List all movies	                                 \n" +
+                        " 2. Coming Soon 						       			 \n" +
+                        " 3. Preview		                                     \n" +
+                        " 4. Now Showing	                                     \n" +
+                        " 5. Search Movies (By Title)                            \n" +
+                        " 0. Back to Customer Movie Menu......                   \n"+
+                        "==========================================================");
+            	System.out.println("Enter choice: ");
+     
+            	while (!sc.hasNextInt()) {
+            		System.out.println("Invalid input type. Please choose a choice from 0-5.");
+            		sc.next(); // Remove newline character
+            	}
+     
+            	choice = sc.nextInt();
+                
                 /*
                 switch (choice) {
                     case 1:
@@ -435,6 +453,9 @@ public class MovieManager {
                         break;
                 }*/
             } //while (choice != 0);
+        	
+        	
+        	
         }
     }
 
@@ -680,16 +701,18 @@ public class MovieManager {
             }
             
             do {
-                System.out.println("Choose a movie (Enter 0 to exit): ");
+                System.out.println("Choose a movie (Enter 0 to exit)1: ");
                 
                 while (!sc.hasNextInt()) {
             		System.out.printf("Invalid input type. Please choose a choice from 0-%d.\n", (movieSelect.size()));
             		sc.next(); // Remove newline character
             	}
                 choice = sc.nextInt()-1;
+                //System.out.println("choice: "+choice);
                 if(choice==-1) {
                     return;
-                } else if (choice < 0 || choice >= movieSelect.size()) {
+                } 
+                else if (choice < 0 || choice >= movieSelect.size()) {
                 	System.out.println("Invalid choice. Please enter a number between 0 and " + movieSelect.size());
                 } 
                 
@@ -1586,7 +1609,8 @@ public class MovieManager {
 	            		sc.next(); // Remove newline character
 	                }
 	                
-	                subchoice = sc.nextInt()-1;        
+	                subchoice = sc.nextInt()-1;
+	                System.out.println("subchoice:"+subchoice);
 	                
 	                if (subchoice == -1) {
 	             	   System.out.println("Back to Top 5......");
