@@ -213,6 +213,22 @@ public class StaffApp {
 				System.out.println("Invalid choice. Please choose between 0-3.");
 				break;
 			}*/
+			
+			System.out.println(	"==================== MOBLIMA STAFF APP ====================\n" +
+                    " 1. View Top 5 Movies                                     \n" +
+                    " 2. Configure System Settings                             \n" +
+                    " 3. Movie Database                                        \n" +
+                    " 0. Logout from StaffApp                                  \n"+
+					"===========================================================");
+			System.out.println("Enter choice: ");
+
+			while (!sc.hasNextInt()) {
+				System.out.println("Invalid input type. Please enter an integer value.");
+				sc.next(); // Remove newline character
+			}
+
+			choice = sc.nextInt();
+			
 		} //while (choice != 0);
     }
 }

@@ -1626,14 +1626,14 @@ public class MovieManager {
 			}
 			
 			if (appType.equals("Customer")) {
-	            System.out.println(	"==================== View Top 5 Movies =====================\n" +
+	            System.out.println(	"==================== View Top 5 Movies1 =====================\n" +
 	                                " 1. By Sales                                              \n" +
 	                                " 2. By Tickets Sold                                       \n" +
 	                                " 3. By Reviews                                            \n" +
 	                                " 0. Back to CustomerApp                                   \n"+
 	                                "============================================================");
 			} else if (appType.equals("Staff")) {
-	            System.out.println(	"==================== View Top 5 Movies =====================\n" +
+	            System.out.println(	"==================== View Top 5 Movies1 =====================\n" +
 	                                " 1. By Sales                                              \n" +
 	                                " 2. By Tickets Sold                                       \n" +
 	                                " 3. By Reviews                                            \n" +

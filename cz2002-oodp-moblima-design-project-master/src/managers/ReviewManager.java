@@ -180,6 +180,17 @@ public class ReviewManager {
         	}
         	else if (choice == 2) {
         		this.editReview(review);
+        		
+        		String reviewID = IDHelper.getLatestID("review");
+            	review.setReviewID(reviewID);
+            	this.save(review);
+            	MovieManager.getInstance().updateReview(movieID, reviewID, review.getScore(), "add");
+            	
+            	this.reviews.put(review.getReviewID(), review);
+            	
+            	System.out.println("Review created! Back to ReviewPortal......");
+        		
+        		choice = 0;
         	}
         	else if (choice == 0) {
         		System.out.println("Review discarded. Back to MovieChoices......");
