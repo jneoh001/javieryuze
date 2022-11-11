@@ -73,8 +73,24 @@ public class DriverApp {
 	        		System.out.println("Please enter an option between 0-2");
 	        		break;
 	        }*/
+        	
+        	System.out.println("======================= MOBLIMA APP =======================\n"+
+                    " 1. Customer App                                          \n"+
+                    " 2. Staff App                                             \n"+
+                    " 0. Quit App                                              \n"+
+    						   "===========================================================");
+    	
+            System.out.println("Enter choice: ");
+            
+            while (!sc.hasNextInt()) {
+            	System.out.println("Invalid input type. Please enter an integer value.");
+        		sc.next(); // Remove newline character
+            }
+            
+            choice = sc.nextInt();
+        	
 		} //while (choice != 0);
-		
+		System.out.println("Thank you for using our app!");
 		sc.close();
 	}
 }

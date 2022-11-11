@@ -188,7 +188,7 @@ public class TransactionManager implements ResetSelf {
     	// 	}
 		// }
 
-		{
+		while(!exit) {
 			System.out.println("================ PAYMENT CONFIRMATION ================\n"+
 									" 1. Enter payment details                           \n"+
 									" 0. Back to ticket selection                        \n"+
@@ -209,7 +209,7 @@ public class TransactionManager implements ResetSelf {
 				break;
 			}
 	
-			else if(chocie == 1){
+			else if(choice == 1){
 				System.out.println("Please enter your name:");
 						
 						while (!sc.hasNext()) { // Not a string
@@ -278,7 +278,7 @@ public class TransactionManager implements ResetSelf {
 			}
 	
 	
-		}while(!exit);
+		} //while(!exit);
 	}
 
 		
@@ -500,7 +500,7 @@ public class TransactionManager implements ResetSelf {
         }
 
 		// Luhn's check sees if the number is a valid credit card number (not whether it exists)
-        if (!luhnCheck(card)) {
+        /*if (!luhnCheck(card)) {
         	System.out.println("The credit card number you've entered is invalid. Please try again.");
         	return false;
         }
@@ -509,7 +509,7 @@ public class TransactionManager implements ResetSelf {
         if (!creditCardCompanyCheck(card)) {
         	System.out.println("The credit card number you've entered is invalid. Please try again.");
         	return false;
-        }
+        }*/
         
         return true;
 	}

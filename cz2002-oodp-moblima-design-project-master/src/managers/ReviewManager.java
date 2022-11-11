@@ -180,6 +180,17 @@ public class ReviewManager {
         	}
         	else if (choice == 2) {
         		this.editReview(review);
+        		
+        		String reviewID = IDHelper.getLatestID("review");
+            	review.setReviewID(reviewID);
+            	this.save(review);
+            	MovieManager.getInstance().updateReview(movieID, reviewID, review.getScore(), "add");
+            	
+            	this.reviews.put(review.getReviewID(), review);
+            	
+            	System.out.println("Review created! Back to ReviewPortal......");
+        		
+        		choice = 0;
         	}
         	else if (choice == 0) {
         		System.out.println("Review discarded. Back to MovieChoices......");
@@ -212,7 +223,7 @@ public class ReviewManager {
         		break;
             }*/
             
-            System.out.println(	"========================= ADD REVIEW ====================\n" +
+            /*System.out.println(	"========================= ADD REVIEW ====================\n" +
                     " 1. Submit review	   						    	 	 \n" +
                     " 2. Edit review	   						    	 	 \n" +
 	                " 0. Discard review, back to Movie Choices              \n"+
@@ -234,7 +245,7 @@ public class ReviewManager {
             }
 
             choice = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine();*/
         
         } //while (choice != 0);
     }
