@@ -116,8 +116,34 @@ public class ReviewManager {
         
         int choice;
         
-        do {
-            System.out.println(	"========================= ADD REVIEW ====================\n" +
+        System.out.println(	"========================= ADD REVIEW ====================\n" +
+                " 1. Submit review	   						    	 	 \n" +
+                " 2. Edit review	   						    	 	 \n" +
+                " 0. Discard review, back to Movie Choices              \n"+
+                "=========================================================");
+
+        System.out.println("Your current review: ");
+        System.out.println("Name: " + review.getReviewerName());
+        System.out.println("Title: " + review.getReviewTitle());
+        System.out.println("Review body: " + review.getReviewBody());
+        System.out.println("Score: " + review.getScore());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, hh.mma");
+        System.out.println("DateTime: " + review.getreviewDateTime().format(formatter));
+        System.out.println("");
+        System.out.println("Enter choice: ");
+
+        while (!sc.hasNextInt()) {
+        	System.out.println("Invalid input type. Please enter an integer value.");
+        	sc.next(); // Remove newline character
+        }
+
+        choice = sc.nextInt();
+        sc.nextLine();
+        
+        while (choice != 0) {
+        
+        //do {
+            /*System.out.println(	"========================= ADD REVIEW ====================\n" +
 			                    " 1. Submit review	   						    	 	 \n" +
 			                    " 2. Edit review	   						    	 	 \n" +
 				                " 0. Discard review, back to Movie Choices              \n"+
@@ -139,9 +165,31 @@ public class ReviewManager {
             }
             
             choice = sc.nextInt();
-            sc.nextLine();
-        
-            switch (choice) {
+            sc.nextLine();*/
+        	
+        	if (choice == 1) {
+        		String reviewID = IDHelper.getLatestID("review");
+            	review.setReviewID(reviewID);
+            	this.save(review);
+            	MovieManager.getInstance().updateReview(movieID, reviewID, review.getScore(), "add");
+            	
+            	this.reviews.put(review.getReviewID(), review);
+            	
+            	System.out.println("Review created! Back to ReviewPortal......");
+            	choice = 0;
+        	}
+        	else if (choice == 2) {
+        		this.editReview(review);
+        	}
+        	else if (choice == 0) {
+        		System.out.println("Review discarded. Back to MovieChoices......");
+        	}
+        	else {
+        		System.out.println("Invalid choice. Please enter a number between 0-2");
+        	}
+        	
+        	
+            /*switch (choice) {
             case 1:
             	String reviewID = IDHelper.getLatestID("review");
             	review.setReviewID(reviewID);
@@ -162,9 +210,33 @@ public class ReviewManager {
         	default:
         		System.out.println("Invalid choice. Please enter a number between 0-2");
         		break;
+            }*/
+            
+            System.out.println(	"========================= ADD REVIEW ====================\n" +
+                    " 1. Submit review	   						    	 	 \n" +
+                    " 2. Edit review	   						    	 	 \n" +
+	                " 0. Discard review, back to Movie Choices              \n"+
+                    "=========================================================");
+
+            System.out.println("Your current review: ");
+            System.out.println("Name: " + review.getReviewerName());
+            System.out.println("Title: " + review.getReviewTitle());
+            System.out.println("Review body: " + review.getReviewBody());
+            System.out.println("Score: " + review.getScore());
+            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, hh.mma");
+            System.out.println("DateTime: " + review.getreviewDateTime().format(formatter));
+            System.out.println("");
+            System.out.println("Enter choice: ");
+
+            while (!sc.hasNextInt()) {
+            	System.out.println("Invalid input type. Please enter an integer value.");
+            	sc.next(); // Remove newline character
             }
+
+            choice = sc.nextInt();
+            sc.nextLine();
         
-        } while (choice != 0);
+        } //while (choice != 0);
     }
     
     
@@ -179,15 +251,26 @@ public class ReviewManager {
     	
     	int choice;
     	
-    	do {
-        	System.out.println("Which review would you like to delete? Input 0 to go back to MovieChoices");
+    	System.out.println("Which review would you like to delete? Input 0 to go back to MovieChoices");
+    	
+    	while (!sc.hasNextInt()) {
+        	System.out.println("Invalid input type. Please enter an integer value.");
+    		sc.next(); // Remove newline character
+        }
+    	
+    	choice = sc.nextInt();
+    	
+    	while (choice != 0) {
+    	
+    	//do {
+        	/*System.out.println("Which review would you like to delete? Input 0 to go back to MovieChoices");
         	
         	while (!sc.hasNextInt()) {
             	System.out.println("Invalid input type. Please enter an integer value.");
         		sc.next(); // Remove newline character
             }
         	
-        	choice = sc.nextInt();
+        	choice = sc.nextInt();*/
         	
         	if (choice == 0) {
         		System.out.println("Back to MovieChoices......");
@@ -203,8 +286,18 @@ public class ReviewManager {
         		choice = 0;
         	} else {
         		System.out.println("Invalid input. Please give a number between 0-" + reviewIDs.size());
-        	}    		
-    	} while (choice != 0);
+        	}
+        	
+        	System.out.println("Which review would you like to delete? Input 0 to go back to MovieChoices");
+        	
+        	while (!sc.hasNextInt()) {
+            	System.out.println("Invalid input type. Please enter an integer value.");
+        		sc.next(); // Remove newline character
+            }
+        	
+        	choice = sc.nextInt();
+        	
+    	} //while (choice != 0);
     }
     
     
@@ -217,8 +310,28 @@ public class ReviewManager {
     private void editReview(Review review) {
     	int choice;
     	
-    	do {
-            System.out.println(	"======================== EDIT REVIEW ====================\n" +
+    	System.out.println(	"======================== EDIT REVIEW ====================\n" +
+                " 1. Edit Name		   						    	 	 \n" +
+                " 2. Edit Title	   						    	 	 \n" +
+                " 3. Edit Review Body	   						    	\n" +
+                " 4. Edit Score	   						    	 	 \n" +
+                " 0. Finish Editing Review 				            \n"+
+                "=========================================================");
+
+    	System.out.println("Enter choice: ");
+
+    	while (!sc.hasNextInt()) {
+    		System.out.println("Invalid input type. Please enter an integer value.");
+    		sc.next(); // Remove newline character
+    	}
+
+    	choice = sc.nextInt();
+    	sc.nextLine();
+    	
+    	while (choice != 0) {
+    	
+    	//do {
+            /*System.out.println(	"======================== EDIT REVIEW ====================\n" +
 				                " 1. Edit Name		   						    	 	 \n" +
 				                " 2. Edit Title	   						    	 	 \n" +
 				                " 3. Edit Review Body	   						    	\n" +
@@ -234,9 +347,38 @@ public class ReviewManager {
             }
             
             choice = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine();*/
             
-            switch (choice) {
+    		if (choice == 1) {
+    			System.out.println("Enter your name: ");
+                review.setReviewerName(sc.nextLine());
+    		}
+    		else if (choice == 2) {
+    			System.out.println("Enter title of review: ");
+                review.setReviewTitle(sc.nextLine());
+    		}
+    		else if (choice == 3) {
+    			 System.out.println("Enter review: ");
+                 review.setReviewBody(sc.nextLine());
+    		}
+    		else if (choice == 4) {
+    			System.out.println("Enter a movie score between 0-5: ");
+
+                while (!sc.hasNextDouble()) {
+                	System.out.println("Invalid input type. Please enter a numeric value.");
+            		sc.next(); // Remove newline character
+
+                }
+                review.setScore(sc.nextDouble());   
+    		}
+    		else if (choice == 0) {
+    			System.out.println("Review discarded. Back to AddReview......");
+    		}
+    		else {
+    			System.out.println("Invalid choice. Please enter a number between 0-4");
+    		}
+    		
+            /*switch (choice) {
             case 1:
                 System.out.println("Enter your name: ");
                 review.setReviewerName(sc.nextLine());
@@ -265,8 +407,27 @@ public class ReviewManager {
         	default:
         		System.out.println("Invalid choice. Please enter a number between 0-4");
         		break;
-            } 
-    	} while (choice != 0);       
+            }*/
+            
+            System.out.println(	"======================== EDIT REVIEW ====================\n" +
+	                " 1. Edit Name		   						    	 	 \n" +
+	                " 2. Edit Title	   						    	 	 \n" +
+	                " 3. Edit Review Body	   						    	\n" +
+	                " 4. Edit Score	   						    	 	 \n" +
+	                " 0. Finish Editing Review 				            \n"+
+                    "=========================================================");
+
+            System.out.println("Enter choice: ");
+
+            while (!sc.hasNextInt()) {
+            	System.out.println("Invalid input type. Please enter an integer value.");
+            	sc.next(); // Remove newline character
+            }
+
+            choice = sc.nextInt();
+            sc.nextLine();
+            
+    	} //while (choice != 0);       
     }
     
     

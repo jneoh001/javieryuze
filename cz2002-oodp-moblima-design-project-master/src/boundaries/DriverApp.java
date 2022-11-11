@@ -13,8 +13,25 @@ public class DriverApp {
 		int choice;
 		Scanner sc = new Scanner(System.in); 
 		
-		do {
-	        System.out.println("======================= MOBLIMA APP =======================\n"+
+		System.out.println("======================= MOBLIMA APP =======================\n"+
+                " 1. Customer App                                          \n"+
+                " 2. Staff App                                             \n"+
+                " 0. Quit App                                              \n"+
+						   "===========================================================");
+	
+        System.out.println("Enter choice: ");
+        
+        while (!sc.hasNextInt()) {
+        	System.out.println("Invalid input type. Please enter an integer value.");
+    		sc.next(); // Remove newline character
+        }
+        
+        choice = sc.nextInt();
+		
+        while (choice != 0) {
+        
+		//do {
+	        /*System.out.println("======================= MOBLIMA APP =======================\n"+
 	                " 1. Customer App                                          \n"+
 	                " 2. Staff App                                             \n"+
 	                " 0. Quit App                                              \n"+
@@ -27,9 +44,22 @@ public class DriverApp {
         		sc.next(); // Remove newline character
             }
 	        
-	        choice = sc.nextInt();
+	        choice = sc.nextInt();*/
 	        
-	        switch (choice) {
+        	if (choice == 1) {
+        		CustomerApp.getInstance().displayCustomerMenu();
+        	}
+        	else if (choice == 2) {
+        		StaffApp.getInstance().displayLoginMenu();
+        	}
+        	else if (choice == 0) {
+        		System.out.println("Thank you for using our MOBLIMA APP");
+        	}
+        	else {
+        		System.out.println("Please enter an option between 0-2");
+        	}
+        	
+	        /*switch (choice) {
 		        case 1:
 		        	 CustomerApp.getInstance().displayCustomerMenu();
 		        	break;
@@ -42,8 +72,8 @@ public class DriverApp {
 	        	default:
 	        		System.out.println("Please enter an option between 0-2");
 	        		break;
-	        }
-		} while (choice != 0);
+	        }*/
+		} //while (choice != 0);
 		
 		sc.close();
 	}

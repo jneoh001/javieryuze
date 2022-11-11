@@ -168,7 +168,7 @@ public class BookingManager implements ResetSelf {
     			resetSelf();
         	}
         	else if (choice == 1) {
-        		sc.next();
+        		//sc.next();
         		addSeatSelection();
         	}
         	else if (choice == 2) {
@@ -191,6 +191,17 @@ public class BookingManager implements ResetSelf {
             	System.out.println("Invalid input type. Please enter an integer value.");
         		sc.next(); // Remove newline character
             }
+        	
+        	System.out.println("------------------ SEAT BOOKING --------------------\n"+
+					   " 1. Select a seat                                   \n"+
+						" 2. Deselect a seat                                 \n"+
+						" 3. Confirm and proceed to ticket selection         \n"+
+						" 0. Exit			                                  \n"+
+					   "------------------------------------------------------");
+        	System.out.println("Please select a choice:");
+	
+        	choice = sc.nextInt();
+        	
     	}
     }
     
