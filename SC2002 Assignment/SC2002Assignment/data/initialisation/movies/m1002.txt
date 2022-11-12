@@ -1,0 +1,11 @@
+m1002
+Terminator: Dark Fate
+BLOCKBUSTER,ACTION,SCIFI
+Tim Miller
+Diego Boneta,Arnold Schwarzenegger,Linda Hamilton
+Linda Hamilton (Sarah Connor) and Arnold Schwarzenegger (T-800) return in their iconic roles in Terminator: Dark Fate, directed by Tim Miller (Deadpool) and produced by visionary filmmaker James Cameron and David Ellison. Following the events of Terminator 2: Judgment Day, Terminator: Dark Fate also stars Mackenzie Davis, Natalia Reyes, Gabriel Luna, and Diego Boneta.
+NC16
+IMAX,TWOD,THREED
+128
+NOW_SHOWING
+20/09/2019

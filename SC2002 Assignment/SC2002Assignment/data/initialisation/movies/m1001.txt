@@ -1,0 +1,11 @@
+m1001
+Abominable
+ANIMATION,COMEDY,FANTASY
+Jill Culton
+Sarah Paulson,Albert Tsai,Chloe Bennet
+When teenage Yi encounters a young Yeti on the roof of her apartment building in Shanghai, she and her mischievous friends, Jin and Peng, name him “Everest” and embark on an epic quest to reunite the magical creature with his family at the highest point on Earth. But the trio of friends will have to stay one-step ahead of Burnish, a wealthy man intent on capturing a Yeti, and zoologist Dr. Zara to help Everest get home.
+PG
+TWOD,THREED
+98
+NOW_SHOWING
+05/10/2019

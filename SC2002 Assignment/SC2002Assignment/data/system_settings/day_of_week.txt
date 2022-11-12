@@ -1,0 +1,7 @@
+MON | 0
+TUE | 0
+WED | 0
+THU | 0
+FRI | 3
+SAT | 3
+SUN | 3

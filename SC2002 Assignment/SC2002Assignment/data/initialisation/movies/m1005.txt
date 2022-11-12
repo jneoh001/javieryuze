@@ -1,0 +1,11 @@
+m1005
+Gemini Man
+ACTION,DRAMA,THRILLER
+Ang Lee
+Benedict Wong,Will Smith,Clive Owen
+Gemini Man is an innovative action-thriller starring Will Smith as Henry Brogan, an elite assassin, who is suddenly targeted and pursued by a mysterious young operative that seemingly can predict his every move.
+PG13
+TWOD,THREED
+117
+NOW_SHOWING
+10/11/2019
