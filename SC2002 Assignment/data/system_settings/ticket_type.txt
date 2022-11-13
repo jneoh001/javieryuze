@@ -1,3 +1,0 @@
-STANDARD            | 0
-STUDENT             | -3
-SENIOR              | -5

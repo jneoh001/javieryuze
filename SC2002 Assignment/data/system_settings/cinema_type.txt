@@ -1,2 +1,0 @@
-PLATINUM   | 10
-NORMAL     | 0
