@@ -9,26 +9,24 @@ import utils.SerializerHelper;
 import java.util.ArrayList;
 
 /**
- * This is the company manager. It will interface with all company related issues
- * Company will be the entity that holds 3 cineplexes, each holding 3 cinemas
+ * Company manager Class. Company holds 3 cineplexes which in turn each holds 3 Cinemas
  */
 public class CompanyManager {
 	// Attributes
 	/**
-	 * This is the entire company object
+	 * company object
 	 */
 	private Company company;
 
 	
-	// Singleton
-	/**
-     * single_instance tracks whether CompanyManager has been instantiated before.
+	
+	/** 
+     * Checks if there is a single instance of CompanyManager
      */
 	private static CompanyManager single_instance = null;
 	
 	/**
-     * Instantiates the CompanyManager singleton. If no previous instance has been created,
-     * one is created. Otherwise, the previous instance created is used.
+     * Creates an instance of CompanyManager if none exists, if one exists we use that instance instead.
      * @return an instance of CompanyManager.
      */
 	public static CompanyManager getInstance() {
@@ -38,10 +36,9 @@ public class CompanyManager {
 	}
 	
 	
-	// Constructor
+	
     /**
-     * Constructor of CompanyManager. Tries to read in the serialized data first. If not available, it will create these files
-     * from our initialization data
+     * Constructor of CompanyManager. Read serialized data, if none exists we will create.
      */
 	private CompanyManager() {
 		Company serializedObject = this.load();
@@ -57,7 +54,7 @@ public class CompanyManager {
 	
 	// Public exposed methods to app
 	/**
-	 * This returns the company
+	 * Returns company
 	 * @return Company
 	 */
 	public Company getCompany(){
@@ -97,7 +94,7 @@ public class CompanyManager {
 	}
 	
 	/**
-	 * This returns all the Cineplex Names that the company owns
+	 *  returns all the Cineplex Names that  company owns
 	 * @return ArrayList<String>
 	 */
 	public ArrayList<String> getCineplexNames() {

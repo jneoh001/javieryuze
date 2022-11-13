@@ -39,15 +39,14 @@ public class CustomerManager implements ResetSelf{
 	private Scanner sc= new Scanner(System.in);
 
 
-	// Singleton
+	
 	/**
-     * single_instance tracks whether TransactionManager has been instantiated before.
+     * Checks whether CustomerManager has been instantiated before.
      */
 	private static CustomerManager single_instance = null;
 
 	/**
-     * Instantiates the CustomerManager singleton. If no previous instance has been created,
-     * one is created. Otherwise, the previous instance created is used.
+     * Creates an instance of CustomerManager if none exists, if one exists we use that instance instead.
      * @return an instance of CustomerManager.
      */
 	public static CustomerManager getInstance()
@@ -120,7 +119,7 @@ public class CustomerManager implements ResetSelf{
 	}
 	
 	/**
-	 * This will store the booking ID into the current customer's bookingID list
+	 * Store bookingID into Customer bookingID list
 	 * @param bookingID This is the bookingID to be associated with the customer
 	 */
 	public void storeBooking(String bookingID) {
@@ -131,7 +130,7 @@ public class CustomerManager implements ResetSelf{
 	}
 	
 	/**
-	 * Resets the CustomerManager's attributes
+	 * Reset attributes using resetSelf
 	 */
 	public void resetSelf() {
 		setCust(null);
@@ -139,7 +138,7 @@ public class CustomerManager implements ResetSelf{
 	
 	// Getters 
 	/**
-	 * Gets the current customer object
+	 * Gets customer object
 	 * @return CustomerAccount 
 	 */
 	public CustomerAccount getCust() {
@@ -148,7 +147,7 @@ public class CustomerManager implements ResetSelf{
 
 	// Setters
 	/**
-	 * sets the current customer object
+	 * Sets customer object
 	 * @param cust 
 	 */
 	public void setCust(CustomerAccount cust) {
@@ -188,7 +187,7 @@ public class CustomerManager implements ResetSelf{
 	
 
 	/**
-	 * This is to print out the customer's booking history
+	 * Print out the customer's booking history
 	 * @param custToPrint This is the customer we are querying
 	 */
 	private void printBookingHistory(CustomerAccount custToPrint) {//given customer account, print booking history
@@ -233,7 +232,7 @@ public class CustomerManager implements ResetSelf{
 	}
 	
 	/**
-	 * Validate mobile number of user, check if all numeric and is 8 digits long (Assume Singapore)
+	 * This is to verify the validity of the user's mobile number. We check whether it is 8 digits and it is numeric.  We assume this App is for usage in Singapore so country code is needed.
 	 * @param mobileNo This is the mobile number that we are validating
 	 * @return Boolean successfully validated or not
 	 */
@@ -258,7 +257,7 @@ public class CustomerManager implements ResetSelf{
 	
 	
 	/**
-	 * Checks if email address is valid
+	 * Verify validity of email address
 	 * @param email This is the email address that we are validating
 	 * @return Boolean successfully validated or not
 	 */

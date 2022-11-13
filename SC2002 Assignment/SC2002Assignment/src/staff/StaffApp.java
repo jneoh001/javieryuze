@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class StaffApp {
 	// Attributes
 	/**
-	 * single_instance tracks whether StaffApp has been instantiated before.
+	 * check whether StaffApp has only one instance or not
 	 */
     private static StaffApp single_instance = null;
     
@@ -20,8 +20,7 @@ public class StaffApp {
     private StaffApp(){}
 
 	/**
-	 * Instantiates the StaffApp singleton. If no previous instance has been created,
-	 * one is created. Otherwise, the previous instance created is used.
+	 * Creates an instance of Customer App and ensure that only one is running. If one exists, we use that.
 	 * @return an instance of StaffApp.
 	 */
     public static StaffApp getInstance()
@@ -35,8 +34,7 @@ public class StaffApp {
     // Public exposed methods to app
 
 	/**
-	 * Displays login menu for staff. Staff is prompted to enter username and password. If not authenticated, staff will be prompted to
-	 * enter username and password again.
+	 * Login Menu for Staffs,  username and password verification is done here.
 	 */
     public void displayLoginMenu() {
     	boolean loggedIn = false;
@@ -59,21 +57,6 @@ public class StaffApp {
 		
 		while (loggedIn == false && quit == false) {
 		
-		//do {
-	        /*System.out.println(	"==================== MOBLIMA STAFF APP ====================\n"+
-				                " 1. Login                                                \n"+
-				                " 0. Back to MOBLIMA APP                                  \n"+
-				                "===========================================================");
-	        System.out.println("Enter choice: ");
-      
-	        while (!sc.hasNextInt()) {
-            	System.out.println("Invalid input type. Please enter an integer value.");
-        		sc.next(); // Remove newline character
-            }
-
-			choice = sc.nextInt();
-	        sc.nextLine();*/
-			
 			if (choice == 1) {
 				System.out.println("Username: ");
                 while (!sc.hasNext()) {
@@ -103,46 +86,15 @@ public class StaffApp {
 				System.out.println("Back to MOBLIMA APP......");
 				quit = true;
 			}
-			
-			/*switch (choice) {
-			case 1: 
-                System.out.println("Username: ");
-                while (!sc.hasNext()) {
-                	System.out.println("Invalid input type. Please try again!");
-            		sc.next(); // Remove newline character
-                }
-                String username = sc.nextLine();
-                System.out.println("Password: ");
-                while (!sc.hasNext()) {
-                	System.out.println("Invalid input type. Please try again!");
-            		sc.next(); // Remove newline character
-                }
-                String password = sc.nextLine();
-                
-                boolean authenticate = StaffManager.getInstance().login(username, password);
-                
-                
-                if (authenticate) {
-                	loggedIn = true;
-                	this.displayLoggedInMenu();
-                	quit = true;
-                } else {
-                	System.out.println("Invalid Username or Password, please try again.");
-                }
-				break;
-			case 0:
-				System.out.println("Back to MOBLIMA APP......");
-				quit = true;
-				break;
-			}*/
-		} //while (loggedIn == false && quit == false);
+			}
+		} 
     }
     
     
     // Private methods
 
 	/**
-	 * Displays menu for staff once log in is approved.
+	 * Once logged in, the staff views this menu.
 	 */
     private void displayLoggedInMenu() {
 		int choice;
@@ -163,23 +115,7 @@ public class StaffApp {
 		choice = sc.nextInt();
 		
 		while (choice != 0) {
-		
-		//do {
-            /*System.out.println(	"==================== MOBLIMA STAFF APP ====================\n" +
-			                    " 1. View Top 5 Movies                                     \n" +
-			                    " 2. Configure System Settings                             \n" +
-			                    " 3. Movie Database                                        \n" +
-			                    " 0. Logout from StaffApp                                  \n"+
-								"===========================================================");
-            System.out.println("Enter choice: ");
-
-            while (!sc.hasNextInt()) {
-            	System.out.println("Invalid input type. Please enter an integer value.");
-        		sc.next(); // Remove newline character
-            }
-
-			choice = sc.nextInt();*/
-			
+	
 			if (choice == 1) {
 				MovieManager.getInstance().viewTop5("Staff");
 			}
@@ -195,25 +131,7 @@ public class StaffApp {
 			else {
 				System.out.println("Invalid choice. Please choose between 0-3.");
 			}
-			
-			/*switch (choice) {
-			case 1: 
-                MovieManager.getInstance().viewTop5("Staff");
-				break;
-			case 2:
-				SystemSettingsManager.getInstance().displayMenu();
-				break;
-			case 3:
-				MovieManager.getInstance().movieMenuStaff();
-				break;
-			case 0:
-				System.out.println("Logging out from StaffApp......");
-				break;
-			default:
-				System.out.println("Invalid choice. Please choose between 0-3.");
-				break;
-			}*/
-			
+				
 			System.out.println(	"==================== MOBLIMA STAFF APP ====================\n" +
                     " 1. View Top 5 Movies                                     \n" +
                     " 2. Configure System Settings                             \n" +
@@ -229,6 +147,6 @@ public class StaffApp {
 
 			choice = sc.nextInt();
 			
-		} //while (choice != 0);
+		} 
     }
 }

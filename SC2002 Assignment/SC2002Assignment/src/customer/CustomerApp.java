@@ -5,13 +5,13 @@ import managers.CustomerManager;
 import java.util.Scanner;
 
 /**
- * App for customers
+ * Customer App
  */
 public class CustomerApp {
 	// Attributes
 
 	/**
-	 * single_instance tracks whether CustomerApp has been instantiated before.
+	 * Checks whether CustomerApp has one instance or not.
 	 */
     private static CustomerApp single_instance = null;
     
@@ -20,8 +20,7 @@ public class CustomerApp {
     private CustomerApp(){}
 
 	/**
-	 * Instantiates the CustomerApp singleton. If no previous instance has been created,
-	 * one is created. Otherwise, the previous instance created is used.
+	 * Creates an instance of Customer App and ensure that only one is running. If one exists, we use that.
 	 * @return an instance of CustomerApp.
 	 */
     public static CustomerApp getInstance()
@@ -32,10 +31,7 @@ public class CustomerApp {
     }
 
 	/**
-	 * Displays Customer Menu and list of options for them such as
-	 * Viewing Movies
-	 * Viewing Top 5 movies by different criteria
-	 * Check their booking history
+	 * Display Customer App and the functions
 	 */
 	public void displayCustomerMenu() {
 		int choice;		
@@ -56,22 +52,7 @@ public class CustomerApp {
 
 		choice = sc.nextInt();
 		while (choice != 0) {
-		//do {
-            /*System.out.println(	"============== MOBLIMA CUSTOMER APP ================\n" +
-			                    " 1. View movie listings					        \n" +
-			                    " 2. View top 5                                    \n" +
-			                    " 3. Check booking history                         \n" +
-			                    " 0. Back to MOBLIMA APP                           \n"+
-							    "====================================================");
-	    	
-            System.out.println("Enter choice: ");
-            
-            while (!sc.hasNextInt()) {
-            	System.out.println("Invalid input type. Please enter an integer value.");
-        		sc.next(); // Remove newline character
-            }
-            
-            choice = sc.nextInt();*/
+	
             
 			if (choice == 1) {
 				MovieManager.getInstance().viewMovies("Customer");
@@ -119,10 +100,7 @@ public class CustomerApp {
             		
                     System.out.println("Enter choice: ");
                     
-                    /*while (!sc.hasNextInt()) {
-                    	System.out.println("Invalid input type. Please enter an integer value.");
-                		sc.next(); // Remove newline character
-                    }*/
+                   
                     
                     subchoice = sc.nextInt();
                 	
@@ -135,57 +113,7 @@ public class CustomerApp {
 				System.out.println("Invalid choice. Please choose between 0-3.");
 			}
 			
-            /*switch(choice){
-                case 1://view movie listings
-                	MovieManager.getInstance().viewMovies("Customer");
-                    break;
-                case 2://view top 5
-                	MovieManager.getInstance().viewTop5("Customer");
-                    break;
-
-                case 3:
-                	int subchoice;
-                	
-                	do {
-                        System.out.println(	"=========== SEARCH BOOKING HISTORY =============\n" +
-			                    " 1. Check via email address					    		\n" +
-			                    " 2. Check via mobile number 					    		\n" +
-				                " 0. Back to CustomerApp......                             \n"+
-											"================================================");
-                		
-                        System.out.println("Enter choice: ");
-                        
-                        while (!sc.hasNextInt()) {
-                        	System.out.println("Invalid input type. Please enter an integer value.");
-                    		sc.next(); // Remove newline character
-                        }
-                        
-                        subchoice = sc.nextInt();
-                        
-	                	switch (subchoice) {
-	                	case 1:
-	                		CustomerManager.getInstance().printPastBookingByEmail();
-	                		break;
-	                	case 2:
-	                		CustomerManager.getInstance().printPastBookingByMobile();
-	                		break;
-	                	case 0:
-	                		System.out.println("Back to CustomerApp......");
-	                		break;
-                		default: 
-                			System.out.println("Invalid choice. Please choose between 0-2.");
-                			break;
-	                	}
-                	} while (subchoice!=0);
-                	
-                    break;
-                case 0:
-                	System.out.println("Back to MOBLIMA APP......");
-                	break;
-                default: 
-                	System.out.println("Invalid choice. Please choose between 0-3.");
-                	break;
-	            }*/
+           
 			
 			System.out.println(	"============== MOBLIMA CUSTOMER APP ================\n" +
 	                " 1. View movie listings					        \n" +
@@ -203,7 +131,7 @@ public class CustomerApp {
 
 			choice = sc.nextInt();
 			
-	        } //while (choice != 0);
+	        } 
 		}
     }
 	

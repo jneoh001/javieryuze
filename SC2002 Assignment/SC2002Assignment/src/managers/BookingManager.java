@@ -12,18 +12,17 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * This is the booking manager. It will interface with all booking related issues
- * The booking manager is the central control class for all booking related issues, and will interact with every other manager to coordinate
+ * Booking Manager controls booking related matters. Interacts with other managers to settle this as well.
  */
 public class BookingManager implements ResetSelf {
     // Attributes
 	/**
-	 * This is the current seating plan of the cinema being booked
+	 * Seating plan of Cinema
 	 */
     private List<String> seatingPlan;
     
     /**
-     * This is the currently selected seats
+     * The selected seats
      */
     private List<String> selectedSeats = new ArrayList<String>();
     
@@ -33,12 +32,12 @@ public class BookingManager implements ResetSelf {
     private HashMap<Integer, Integer> colChecker = new HashMap<Integer, Integer>(); 
     
     /**
-     * Checks if a seat has been booked in a specific row
+     * Check if row occupied.
      */
     private HashMap<Character, ArrayList<Integer>> rowChecker = new HashMap<Character, ArrayList<Integer>>();
     
     /**
-     * This is the current booking that is being filled up
+     * Filling up this booking.
      */
     private Booking booking = null; // Current booking to make
     
@@ -55,16 +54,15 @@ public class BookingManager implements ResetSelf {
     private Scanner sc = new Scanner(System.in);
     
     
-    // Singleton
+    // 
 	/**
-     * single_instance tracks whether BookingManager has been instantiated before.
+     * Tracks whether BookingManager has been instantiatied 
      */
  	private static BookingManager single_instance = null;
  	
 
 	/**
-     * Instantiates the BookingManager singleton. If no previous instance has been created,
-     * one is created. Otherwise, the previous instance created is used.
+	 * Creates an instance of BookingManager, if none exists , use the current existing instance.
      * @return an instance of BookingManager.
      */
 	public static BookingManager getInstance()
@@ -85,10 +83,10 @@ public class BookingManager implements ResetSelf {
  	}
 	
 	
-    // Public exposed methods to app
+    // Public methods
     /**
      * Starts a booking by showing available seats and allows user to select seats based on a copy of showtime
-     * @param baseShowtime Showtime This is the original showtime object that is not going to be changed until the booking is finalized
+     * @param baseShowtime Showtime object that is not going to be changed until the booking is finalized
      */
     public void startSeatSelection(Showtime baseShowtime) {
     	// Create a deep copy of showtime seats so we don't affect the original until booking completes
@@ -206,7 +204,7 @@ public class BookingManager implements ResetSelf {
     }
     
     /**
-     * Once booking is confirmed and payment is made, we raise an event to let other parts know to inject information into this booking
+	 * We raise event to alert other components once Booking and Payment has been made
      */
     public void makeBooking() {
     	// Since booking is confirmed, we update all selected seats to be confirmed seats (occupied)
@@ -266,7 +264,7 @@ public class BookingManager implements ResetSelf {
     }
     
     /**
-     * Resets all variables of this singleton instance (e.g. if user presses back)
+     * Resets the variables of this instance
      */
     public void resetSelf() {
     	setShowtime(null);
@@ -281,50 +279,50 @@ public class BookingManager implements ResetSelf {
     
     // Getters
     /**
-     * This gets the current showtime being booked
+     * Gets ShowTime
      * @return Showtime
      */
 	public Showtime getShowtime() {return showtime;}
 	
 	/**
-	 * This gets the current booking being booked
+	 * Gets Booking
 	 * @return Booking
 	 */
 	public Booking getBooking() {return booking;}
 	
 	/**
-	 * This gets the current seating plan
+	 * Gets Seating Plan
 	 * @return List<String>
 	 */
     public List<String> getSeatingPlan() {return seatingPlan;}
     
     /**
-     * This gets the current selected seats 
+     * Gets Selected Seats
      * @return List<String>
      */
 	public List<String> getSelectedSeats() {return selectedSeats;}
 	
 	/**
-	 * This gets the row checker, see whether the row is valid or not
+	 * Gets RowChecker and its Validity
 	 * @return HashMap<Character, ArrayList<Integer>>
 	 */
 	public HashMap<Character, ArrayList<Integer>> getRowChecker() {return rowChecker;}
 	
 	/**
-	 * This gets the column checker, see whether the column is valid or not
+	 * Gets ColumnChecker and its validity
 	 * @return HashMap<Character, ArrayList<Integer>>
 	 */
 	public HashMap<Integer, Integer> getColChecker() {return colChecker;}
 	
     // Setters
     /**
-     * This sets the current showtime that we are booking
+     * Sets ShowTime 
      * @param showtime The showtime that we want to book
      */
     public void setShowtime(Showtime showtime) {this.showtime = showtime;}
     
     /**
-     * This sets the current booking that we are working with
+     * Sets Current Booking
      * @param booking The booking that we want to book
      */
     public void setBooking(Booking booking) {this.booking = booking;}
@@ -384,7 +382,7 @@ public class BookingManager implements ResetSelf {
     
     
     /**
-     * Create a local deep copy of showtime's seats
+     * Create copy of showtime's seats
      * @param list List<String> This is the layout of the cinema being booked
      * @return ArrayList<String> This is a new copy that will be visually updated without affected the actual booking object
      */
@@ -598,20 +596,6 @@ public class BookingManager implements ResetSelf {
 			return;
 		}
 		
-		/*switch(operation) {
-			case "addSelection":
-				seatModifier = "2";
-				break;
-			case "deleteSelection":
-				seatModifier = "0";
-				break;
-			case "confirmSelection":
-				seatModifier = "1";
-				break;
-			default:
-				System.out.println("Error! Operation parameter for function updateSeatingPlan() in BookingManager is invalid.");
-				return; // Terminate
-		}*/
 		
 		// Iterate until we find the seat's row and col index position in the seatingPlan List
     	for (int row = 0; row < getSeatingPlan().size(); row++) {
