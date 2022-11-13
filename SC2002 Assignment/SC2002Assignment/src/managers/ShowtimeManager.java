@@ -17,8 +17,7 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 
 /**
- * This is the ShowtimeManager. It will manage all the showtimes that a booking has. 
- * It will also allow the staff to create or edit or delete a showtime
+ * ShowTime Manager class. Manages showtime and allows the create, reading , updating and deleting of ShowTime
  */
 public class ShowtimeManager {
 	// Attributes
@@ -31,13 +30,12 @@ public class ShowtimeManager {
 	private Scanner sc = new Scanner(System.in);
 
     /**
-     * single_instance tracks whether ShowtimeManager has been instantiated before.
+     * Tracks whether ShowtimeManager has only a single instance
      */
     private static ShowtimeManager single_instance = null;
 
     /**
-     * Instantiates the ShowtimeManager singleton. If no previous instance has been created,
-     * one is created. Otherwise, the previous instance created is used.
+     * Creates an instance of MovieManager if none exists, if one exists we use that instance instead.
      * @return an instance of ShowtimeManager.
      */
     public static ShowtimeManager getInstance()
@@ -108,32 +106,6 @@ public class ShowtimeManager {
                     sc.next();
                 }
                 choice = sc.nextInt();
-                // switch (choice) {
-                //     case 1:
-                //         System.out.println("Enter choice of showtime: ");
-                //         while(!sc.hasNextInt()) {
-                //             System.out.println("Please enter a number!");
-                //             sc.next();
-                //         }
-                //         int option = sc.nextInt() - 1;
-                //         while (option >= relevantShowtimeIDs.size() || option < 0) {
-                //             System.out.println("Please enter a positive number up to " + relevantShowtimeIDs.size() + "!");
-                //             option = sc.nextInt() - 1;
-                //         }
-                //         String showtimeID = relevantShowtimeIDs.get(option);
-                //         this.showtimeMenuStaff(showtimeID);
-                //         break;
-                //     case 2:
-                //         Showtime showtime = this.createShowtime(movieID);
-                //         relevantShowtimes.add(showtime);
-                //         break;
-                //     case 0:
-                //         System.out.println("Back to Showtimes List......");
-                //         break;
-                //     default:
-                //         System.out.println("Invalid choice. Please choose between 0-1");
-                //         break;
-                // }
                 
                 if(choice ==1){
                     System.out.println("Enter choice of showtime: ");
@@ -177,19 +149,7 @@ public class ShowtimeManager {
                 }
                 choice = sc.nextInt();
 
-                // switch (choice) {
-                //     case 1:
-                //         Showtime showtime = this.createShowtime(movieID);
-                //         relevantShowtimes.add(showtime);
-                //         break;
-                //     case 0:
-                //         System.out.println("Back to Showtimes List......");
-                //         break;
-                //     default:
-                //         System.out.println("Invalid choice. Please choose between 0-1");
-                //         break;
-                // }
-                
+        
                 if(choice ==1){
                     Showtime showtime = this.createShowtime(movieID);
                     relevantShowtimes.add(showtime);
@@ -224,28 +184,7 @@ public class ShowtimeManager {
                     }
                     choice = sc.nextInt();
                 }
-                // switch (choice) {
-                //     case 1:
-                //         System.out.println("Enter choice of showtime: ");
-                //         while(!sc.hasNextInt()) {
-                //             System.out.println("Please enter a number!");
-                //             sc.next();
-                //         }
-                //         int option = sc.nextInt() - 1;
-                //         while (option >= relevantShowtimeIDs.size() || option < 0) {
-                //             System.out.println("Please enter a positive number up to " + relevantShowtimeIDs.size() + "!");
-                //             option = sc.nextInt() - 1;
-                //         }
-                //         String showtimeID = relevantShowtimeIDs.get(option);
-                //         this.showtimeMenuCustomer(showtimeID);
-                //         break;
-                //     case 0:
-                //         System.out.println("Back to MovieManager......");
-                //         break;
-                //     default:
-                //         System.out.println("Invalid choice. Please choose between 0-1");
-                //         break;
-                // }
+               
 
                 if(choice == 1){
                     System.out.println("Enter choice of showtime: ");
@@ -294,36 +233,6 @@ public class ShowtimeManager {
         Movie movie = MovieManager.getInstance().getMoviebyID(movieID);
         if (movie.getShowingStatus().equals(ShowingStatus.COMING_SOON)) {}
         else {
-            // do {
-            //     System.out.println("================== SHOWTIME CUSTOMER APP ===================\n" +
-            //                     " 1. View ALL Details                                      \n" +
-            //                     " 2. Book Showtime                                         \n" +
-            //                     " 0. Back to MovieManager                                  \n"+
-            //                        "============================================================");
-            //     System.out.println("Enter choice: ");
-            //     while(!sc.hasNextInt()) {
-            //         System.out.println("Please enter a number!");
-            //         sc.next();
-            //     }
-            //     choice = sc.nextInt();
-
-            //     switch (choice) {
-            //         case 1:
-            //             this.viewShowtime(selectedShowtimeID);
-            //             break;
-            //         case 2:
-            //             Showtime showtime = this.findShowtime(selectedShowtimeID);
-            //             BookingManager.getInstance().startSeatSelection(showtime);
-            //             break;
-            //         case 0:
-            //             System.out.println("Back to Showtimes List......");
-            //             break;
-            //         default:
-            //             System.out.println("Invalid choice. Please choose between 0-3.");
-            //             break;
-            //     }
-            // } while (choice != 0);
-
             System.out.println("================== SHOWTIME CUSTOMER APP ===================\n" +
             " 1. View ALL Details                                      \n" +
             " 2. Book Showtime                                         \n" +
@@ -397,39 +306,6 @@ public class ShowtimeManager {
      */
     private void showtimeMenuStaff(String showtimeID) {
         int choice;
-
-        // do {
-        //     System.out.println(	"==================== SHOWTIME STAFF APP ====================\n" +
-        //     					" 1. View ALL Details                                      \n" +
-		// 	            		" 2. Update                                                \n" +
-		// 	                    " 3. Remove                                                \n" +
-		// 	                    " 0. Back to MovieManager                                  \n"+
-        //                         "============================================================");
-        //     System.out.println("Enter choice: ");
-        //     while(!sc.hasNextInt()) {
-        //         System.out.println("Please enter a number!");
-        //         sc.next();
-        //     }
-        //     choice = sc.nextInt();
-
-        //     switch (choice) {
-        //         case 1:
-        //             this.viewShowtime(showtimeID);
-        //             break;
-        //         case 2:
-        //         	this.updateShowtime(showtimeID);
-        //             break;
-        //         case 3:
-        //         	this.deleteShowtime(showtimeID);
-        //             break;
-        //         case 0:
-        //         	System.out.println("Back to ShowtimesList......");
-        //             break;
-        //         default:
-        //             System.out.println("Invalid choice. Please choose between 0-3.");
-        //             break;
-        //     }
-        // } while (choice != 0);
 
         System.out.println(	"==================== SHOWTIME STAFF APP ====================\n" +
         " 1. View ALL Details                                      \n" +
@@ -542,59 +418,6 @@ public class ShowtimeManager {
                 }
                 choice = sc.nextInt();
 
-                // switch (choice) {
-                //     case 1:
-                //         sc.nextLine();
-                //         System.out.println("Enter new Showtime datetime (dd/MM/yyyy HH:mm): ");
-                //         String newDateTime = sc.nextLine();
-                //         LocalDateTime localDateTime = this.dateTimeParser(newDateTime);
-                //         while (localDateTime == null) {
-                //             System.out.println("Enter new Showtime datetime (dd/MM/yyyy HH:mm): ");
-                //             newDateTime = sc.nextLine();
-                //             localDateTime = this.dateTimeParser(newDateTime);
-                //         }
-                //         showtimeToUpdate.setDateTime(this.dateTimeParser(newDateTime));
-                //         break;
-                //     case 2:
-                //         System.out.println("Enter new movie ID: ");
-                //         String newMovieID = sc.next();
-                //         showtimeToUpdate.setMovieID(newMovieID);
-                //         break;
-                //     case 3:
-                //         System.out.println("Enter new cinema ID: ");
-                //         String newCinemaID = sc.next();
-                //         Cinema newCinema = CompanyManager.getInstance().getNewCinema(newCinemaID);
-                //         showtimeToUpdate.setCinema(newCinema);
-                //         break;
-                //     case 4:
-                //         System.out.println("Enter new cineplex name: ");
-                //         String cineplexName = sc.next();
-                //         showtimeToUpdate.setCineplexName(cineplexName);
-                //         break;
-                //     case 5:
-                //         System.out.println("Enter new cinema status: ");
-                //         String cinemaStatus = sc.next();
-                //         while (!cinemaStatusValidator(cinemaStatus)) {
-                //             System.out.println("Enter new movie format: ");
-                //             cinemaStatus = sc.next();
-                //         }
-                //         showtimeToUpdate.setCinemaStatus(CinemaStatus.valueOf(sc.next()));
-                //         break;
-                //     case 6:
-                //         System.out.println("Enter new movie format: ");
-                //         String movieFormat = sc.next();
-                //         while (!movieFormatValidator(movieFormat)) {
-                //             System.out.println("Enter new movie format: ");
-                //             movieFormat = sc.next();
-                //         }
-                //         showtimeToUpdate.setMovieFormat(MovieFormat.valueOf(sc.next()));
-                //         break;
-                //     case 0:
-                //         System.out.println("Going back to Showtime Staff App ...");
-                //     default:
-                //         System.out.println("Please enter an option 0 - 6!");
-                //         break;
-                // }
 
                 if(choice ==1){
                     sc.nextLine();

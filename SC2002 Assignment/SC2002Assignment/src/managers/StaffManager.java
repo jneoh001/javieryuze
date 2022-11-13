@@ -14,13 +14,12 @@ import java.io.IOException;
 public class StaffManager {
 	// Attributes
 	/**
-     * single_instance tracks whether StaffManager has been instantiated before.
+     * Checks whether StaffManager has a single instance
      */
     private static StaffManager single_instance = null;
 
 	/**
-     * Instantiates the StaffManager singleton. If no previous instance has been created,
-     * one is created. Otherwise, the previous instance created is used.
+     * Creates an instance of MovieManager if none exists, if one exists we use that instance instead.
      * @return an instance of StaffManager.
      */
     public static StaffManager getInstance()
